@@ -1,0 +1,64 @@
+
+Vim configuration files (needs 7.3+, +python, +ruby)
+
+Installation
+============
+
+The configurations use vundle and pathogen(for testing bundles, or managing
+scripts which can or should not be managed by vundle).  The installation files
+for vundle bundles is '~/.vim/vundle' and the pathogen based bundles are stored
+in '~/.vim/bundle'. pathogen is itself managed by 'vundle'.
+
+1. create dynamic links if necessary
+
+    $ ln -s <repo dir>/vim ~/.vim
+    $ ln -s <repo dir>/vimrc ~/.vimrc
+
+2. download vundle package
+
+    $ mkdir ~/.vim/vundle
+    $ git clone http://github.com/gmarik/vundle.git ~/.vim/vundle/vundle
+
+3. install vundle based packages (ignore vim startup error messages)
+
+    $ vim -c ':BundleInstall' -c ':qa'
+
+4. build command-t helper executables:
+
+    $ cd ~/.vim/vundle/command-t/ruby
+    $ ruby extconf.rb
+    $ make
+
+Usage:
+======
+
+- Additional local or platform specific options can be configured in
+  ~/.vimrc.local, which will be automatically loaded by vim.
+
+- list of installed vundles and vundle configurations are to be found
+  in ~/.vim/vundles.vim
+
+Vundle Managed bundles
+======================
+
+- vundle
+- supertab
+- pathogen
+- Ack
+- NERD commenter
+- NERD tree
+- YankRing
+- repeat
+- surround
+- localvimrc
+- command-t
+- ColorX
+- a.vim
+- Align
+- pangloss/javascript
+- Gundo
+- github color scheme
+- xoria256 color scheme
+- indent/python
+- pyflakes
+
