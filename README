@@ -1,4 +1,3 @@
-
 Vim configuration files (needs 7.3+, +python, +ruby)
 
 Installation
@@ -19,9 +18,9 @@ in '~/.vim/bundle'. pathogen is itself managed by 'vundle'.
     $ mkdir ~/.vim/vundle
     $ git clone http://github.com/gmarik/vundle.git ~/.vim/vundle/vundle
 
-3. install vundle based packages (ignore vim startup error messages)
+3. install vundle based packages
 
-    $ vim -c ':BundleInstall' -c ':qa'
+    $ vim -u ~/.vim/vundles.vim +BundleInstall +q
 
 4. build command-t helper executables:
 
