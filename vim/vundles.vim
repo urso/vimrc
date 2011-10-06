@@ -26,10 +26,15 @@ Bundle 'a.vim'
 Bundle 'Align'
 Bundle 'pangloss/vim-javascript'
 Bundle 'Gundo'
-Bundle 'github-theme'
-Bundle 'xoria256.vim'
 Bundle 'indentpython.vim--nianyang'
 Bundle 'pyflakes.vim'
+Bundle 'majutsushi/tagbar'
+
+" color schemes
+Bundle 'github-theme'
+Bundle 'xoria256.vim'
+Bundle 'ciaranm/inkpot'
+Bundle 'jellybeans.vim'
 
 " configure yankring
 nnoremap \y :YRShow<CR> 
