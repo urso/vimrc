@@ -89,6 +89,7 @@ endif
 set laststatus=2                        " show status line
 set statusline=%<%n:%f%{ModifiedStr()}\ %y\ %h%r[fo=%{&fo}][spell=%{&spell}]%=%-14.(%l,%c%V%)\ %P
 set colorcolumn=80                      " highlight column 80
+hi ColorColumn ctermbg=235
 
 
 "set list                                " show newlines and tabs
