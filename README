@@ -24,7 +24,7 @@ in '~/.vim/bundle'. pathogen is itself managed by 'vundle'.
 
 4. build command-t helper executables:
 
-    $ cd ~/.vim/vundle/command-t/ruby
+    $ cd ~/.vim/vundle/command-t/ruby/command-t
     $ ruby extconf.rb
     $ make
 
