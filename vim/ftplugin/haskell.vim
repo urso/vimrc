@@ -9,6 +9,12 @@ set expandtab
 
 set nolisp
 
+let g:hs_highlight_delimiters=1
+let g:hs_highlight_boolean=1
+let g:hs_highlight_types=1
+let g:hs_highlight_debug=1
+let g:hs_allow_hash_operator=1
+
 " configure haskell mode
 let g:haddock_browser = "open"
 let g:haddock_browser_callformat = "%s %s"
@@ -16,4 +22,4 @@ let g:haddock_browser_callformat = "%s %s"
 let g:haddock_docdir = expand('$HOME/Library/Haskell/doc')
 au Bufenter *.hs compiler ghc
 
-let b:colors_name='jellybeans'
+"let b:colors_name='jellybeans'

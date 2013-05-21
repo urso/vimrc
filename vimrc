@@ -2,6 +2,17 @@
 set nocompatible " make improved
 filetype off
 
+let mapleader = ","
+
+let g:localvimrc_sandbox=0
+
+set laststatus=2                        " show status line
+set statusline=%<%n:%f%{ModifiedStr()}\ %y\ %h%r[fo=%{&fo}][spell=%{&spell}]%=%-14.(%l,%c%V%)\ %P
+
+set secure
+set exrc
+set nosecure
+
 " use vundle for global bundles and pathogen for user installed bundles
 " vundle dir: $HOME/.vim/vundle
 " pathogen dir: $HOME/.vim/bundle
@@ -13,7 +24,9 @@ call vundle#rc(expand('$HOME/.vim/vundle'))
 " Load/Configure Bundles
 source ~/.vim/vundles.vim
 
-call pathogen#infect()
+" if exists("pathogen#infect")
+    call pathogen#infect()
+" endif
 
 filetype plugin indent on
 
@@ -51,6 +64,8 @@ au FocusLost * :wa                      " auto save file on buffer switch
 nnoremap / /\v
 vnoremap / /\v
 
+" configure paste mode toggle on <leader>p
+nnoremap <leader>p :set invpaste paste?<CR>
 
 if has("autocmd")
 
@@ -76,6 +91,11 @@ set autoread
 if $TERM == "xterm-256color"
     set t_Co=256
 endif
+
+" configure color scheme
+colorscheme github
+set cursorline
+
 set ruler
 set showcmd
 set cmdheight=2
@@ -86,10 +106,13 @@ if &t_Co > 2 || has("gui_running")
     syntax on                           " enable syntax highlighting
     set hlsearch                        " highlight all patterns from last search
 endif
-set laststatus=2                        " show status line
-set statusline=%<%n:%f%{ModifiedStr()}\ %y\ %h%r[fo=%{&fo}][spell=%{&spell}]%=%-14.(%l,%c%V%)\ %P
 set colorcolumn=80                      " highlight column 80
-hi ColorColumn ctermbg=235
+hi ColorColumn ctermbg=253
+
+" show unwanted white spaces
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhitespace /\s\+$/
 
 
 "set list                                " show newlines and tabs
@@ -120,8 +143,9 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set formatoptions=crq
+
 set textwidth=79
-set cinoptions+=l-1s,p0,t0,+2s          " configure C-like language indendation options
+set cinoptions+=:0,l1,p0,t0,+1s,(0,W1s          " configure C-like language indendation options
 
 " searching
 set incsearch                           " incremental searching
@@ -131,14 +155,12 @@ set magic
 
 " key bindings:
 
-let mapleader = ","
-
 nnoremap <silent> <C-A> :silent nohl<CR>	" press C-A to unhilte searches
 map <leader>m :mak<Enter><Enter><Enter>     " just call make and return to vim when done
-map ,,m :make                               
-map ,l :mak<Up><Enter><Enter><Enter>        " call last issued make command
+map <leader><leader>m :mak<Up><Enter><Enter><Enter>        " call last issued make command
 nmap <TAB> <C-^>                            " use TAB to switch to last used buffer in normal mode
 nnoremap <leader>g :tag 
+nnoremap <leader>w :vertical resize 
 
 " shortcuts for moving cursor between windows
 noremap <C-J> <C-W>j
@@ -155,8 +177,10 @@ endif
 
 " load system local vimrc
 if filereadable(expand('$HOME/.vimrc.local'))
-    source ~/.vimrc.local
+    source $HOME/.vimrc.local
 endif
+
+let g:UltiSnipsSnippetDirectories=["mysnippets"]
 
 if has('autocmd')
 	" change colorscheme depending on current buffer
@@ -193,4 +217,8 @@ if has('autocmd')
             \ | hi ColorColumn ctermbg=235
 		\ | endif
 endif
+
+nnoremap <silent> <leader>d :Sbd<CR>
+
+let g:yankring_manual_clipboard_check = 0
 

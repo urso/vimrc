@@ -36,28 +36,3 @@ Usage:
 
 - list of installed vundles and vundle configurations are to be found
   in ~/.vim/vundles.vim
-
-Vundle Managed bundles
-======================
-
-- vundle
-- supertab
-- pathogen
-- Ack
-- NERD commenter
-- NERD tree
-- YankRing
-- repeat
-- surround
-- localvimrc
-- command-t
-- ColorX
-- a.vim
-- Align
-- pangloss/javascript
-- Gundo
-- github color scheme
-- xoria256 color scheme
-- indent/python
-- pyflakes
-
