@@ -24,9 +24,7 @@ call vundle#rc(expand('$HOME/.vim/vundle'))
 " Load/Configure Bundles
 source ~/.vim/vundles.vim
 
-" if exists("pathogen#infect")
-    call pathogen#infect()
-" endif
+silent! call pathogen#infect()
 
 filetype plugin indent on
 
