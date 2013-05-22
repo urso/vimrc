@@ -91,7 +91,7 @@ if $TERM == "xterm-256color"
 endif
 
 " configure color scheme
-colorscheme github
+silent! colorscheme github
 set cursorline
 
 set ruler
