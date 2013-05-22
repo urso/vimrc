@@ -58,6 +58,8 @@ Bundle 'bitc/vim-hdevtools.git'
 Bundle 'git://repo.or.cz/vcscommand'
 Bundle 'taglist.vim'
 Bundle 'git://github.com/urso/sack_shortcut.git'
+Bundle 'git://github.com/urso/haskell_syntax.vim.git'
+" Bundle 'git://github.com/dag/vim2hs.git'
 
 " color schemes
 Bundle 'git://github.com/urso/github-theme.git'
