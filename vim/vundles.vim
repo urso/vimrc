@@ -14,9 +14,8 @@ let g:localvimrc_sandbox=0
 
 " configure ctrl-p plugin
 let g:ctrlp_map = '<leader>t'
-let g:ctrlp_by_filename = 1
+let g:ctrlp_by_filename = 0
 let g:ctrlp_switch_buffer = 0
-" let g:ctrlp_regexp = 1
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_extensions = ['tag', 'buffertag', 'line']
@@ -27,6 +26,15 @@ let g:syntastic_c_compiler_options = ''
 let g:alternateExtensions_cpp = "hh"
 let g:alternateExtensions_cc = "hh,h"
 let g:alternateExtensions_hh = "cpp,cxx,cc"
+
+let g:ycm_filetype_specific_completion_to_disable = {
+    \ 'c' : 1,
+    \ 'cpp': 1,
+    \ 'python': 1
+    \ }
+let g:ycm_register_as_syntastic_checker = 0
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_seed_identifiers_with_syntax = 1
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -59,6 +67,7 @@ Bundle 'git://repo.or.cz/vcscommand'
 Bundle 'taglist.vim'
 Bundle 'git://github.com/urso/sack_shortcut.git'
 Bundle 'git://github.com/urso/haskell_syntax.vim.git'
+Bundle 'Valloric/YouCompleteMe'
 " Bundle 'git://github.com/dag/vim2hs.git'
 
 " color schemes
