@@ -27,14 +27,16 @@ let g:alternateExtensions_cpp = "hh"
 let g:alternateExtensions_cc = "hh,h"
 let g:alternateExtensions_hh = "cpp,cxx,cc"
 
-let g:ycm_filetype_specific_completion_to_disable = {
-    \ 'c' : 1,
-    \ 'cpp': 1,
-    \ 'python': 1
-    \ }
-let g:ycm_register_as_syntastic_checker = 0
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_seed_identifiers_with_syntax = 1
+let g:tagbar_compact = 1
+
+" let g:ycm_filetype_specific_completion_to_disable = {
+"     \ 'c' : 1,
+"     \ 'cpp': 1,
+"     \ 'python': 1
+"     \ }
+" let g:ycm_register_as_syntastic_checker = 0
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_seed_identifiers_with_syntax = 1
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -64,17 +66,20 @@ Bundle 'git://github.com/ollummis/sbd.vim.git'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'bitc/vim-hdevtools.git'
 Bundle 'git://repo.or.cz/vcscommand'
-Bundle 'taglist.vim'
 Bundle 'git://github.com/urso/sack_shortcut.git'
 Bundle 'git://github.com/urso/haskell_syntax.vim.git'
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'git://github.com/gcmt/taboo.vim'
+Bundle 'git://github.com/tpope/vim-unimpaired.git'
+"Bundle 'flazz/vim-colorschemes'
+"Bundle 'guicolorscheme.vim'
+" Bundle 'Valloric/YouCompleteMe'
 " Bundle 'git://github.com/dag/vim2hs.git'
 
 " color schemes
 Bundle 'git://github.com/urso/github-theme.git'
 Bundle 'xoria256.vim'
-Bundle 'ciaranm/inkpot'
-Bundle 'jellybeans.vim'
+" Bundle 'ciaranm/inkpot'
+" Bundle 'jellybeans.vim'
 
 
 "Bundle 'SirVer/ultisnips'
@@ -87,6 +92,7 @@ nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader><leader>g :CtrlPTag<CR>
 nmap <leader><leader>b :CtrlPBufTag<CR>
 nmap <leader>l :CtrlPLine<CR>
-nmap <leader>o :TlistToggle<CR>
+nmap <leader>o :TagbarOpen j<CR>
+nmap <leader>f :TagbarTogglePause<CR>
 nmap <leader>s :SyntasticToggleMode<CR>
 
