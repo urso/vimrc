@@ -13,6 +13,12 @@ set secure
 set exrc
 set nosecure
 
+filetype plugin indent on
+
+" set fold method syntax, but off by default (toggle with 'zi')
+set foldmethod=syntax
+set nofoldenable
+
 " use vundle for global bundles and pathogen for user installed bundles
 " vundle dir: $HOME/.vim/vundle
 " pathogen dir: $HOME/.vim/bundle
@@ -26,7 +32,6 @@ source ~/.vim/vundles.vim
 
 silent! call pathogen#infect()
 
-filetype plugin indent on
 
 " share system clipboard 
 set clipboard=unnamed
@@ -91,14 +96,14 @@ if $TERM == "xterm-256color"
 endif
 
 " configure color scheme
-silent! colorscheme github
-set cursorline
+"set background=dark
+" silent! colorscheme blackboard
 
 set ruler
 set showcmd
 set cmdheight=2
 set nolazyredraw
-set relativenumber                      " show relative line numbers...
+" set relativenumber                      " show relative line numbers...
 set showmatch                           " show matching brackets when text indicator is over them
 if &t_Co > 2 || has("gui_running")
     syntax on                           " enable syntax highlighting
@@ -113,8 +118,9 @@ au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
 
-"set list                                " show newlines and tabs
-"set listchars=tab:▸\ ,eol:¬
+" support for invisibles: http://vimcasts.org/episodes/show-invisibles/
+nmap <leader>i :set list!<CR>
+set listchars=tab:▸\ ,eol:¬
 
 " show modified status with file name (appends '+' to modified file name)
 function ModifiedStr()
@@ -219,4 +225,57 @@ endif
 nnoremap <silent> <leader>d :Sbd<CR>
 
 let g:yankring_manual_clipboard_check = 0
+
+" better tab support (remember working directory per tab)
+function! s:enter_buffer()
+    if exists("t:wd")
+        exec "cd" t:wd
+    else
+        let t:wd = getcwd()
+    endif
+endfunction
+
+function! s:leave_buffer()
+    let t:wd = getcwd()
+endfunction
+augroup wd-per-tab
+    autocmd!
+    autocmd TabEnter * call s:enter_buffer()
+    autocmd TabLeave * call s:leave_buffer()
+augroup END
+
+" test bubling with help of vim-unimpared (see:
+" http://vimcasts.org/episodes/bubbling-text/)
+" Bubble single lines (option + j/k)
+nmap ˚ [e
+nmap ∆ ]e
+" " Bubble multiple lines
+vmap ˚ [egv
+vmap ∆ ]egv
+
+
+" goto last visual select
+nmap gV `[v`]
+
+" move between tabs
+nmap t1 1gt
+nmap t2 2gt
+nmap t3 3gt
+nmap t4 4gt
+nmap t5 5gt
+nmap t6 6gt
+nmap t7 7gt
+nmap t8 8gt
+nmap t9 9gt
+nmap t0 :tablast<CR>
+nmap th :tabfirst<CR>
+nmap tl :tablast<CR>
+nmap tj gt
+nmap tk gT
+nmap to :TabooOpen<SPACE>
+nmap tr :TabooRename<SPACE>
+nmap td :tabclose<CR>
+
+" markdown support
+autocmd FileType markdown set suffixesadd=.mkd
 
