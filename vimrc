@@ -98,6 +98,7 @@ endif
 " configure color scheme
 "set background=dark
 " silent! colorscheme blackboard
+silent! colorscheme github
 
 set ruler
 set showcmd
@@ -105,15 +106,14 @@ set cmdheight=2
 set nolazyredraw
 " set relativenumber                      " show relative line numbers...
 set showmatch                           " show matching brackets when text indicator is over them
-if &t_Co > 2 || has("gui_running")
-    syntax on                           " enable syntax highlighting
-    set hlsearch                        " highlight all patterns from last search
-endif
+syntax on                           " enable syntax highlighting
+set hlsearch                        " highlight all patterns from last search
 set colorcolumn=80                      " highlight column 80
 hi ColorColumn ctermbg=253
 
 " show unwanted white spaces
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
