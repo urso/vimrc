@@ -16,8 +16,26 @@ set nosecure
 filetype plugin indent on
 
 " set fold method syntax, but off by default (toggle with 'zi')
+let c_no_curly_error=1
 set foldmethod=syntax
 set nofoldenable
+
+" configure ]z and [z to jump between open folds
+function! GoToOpenFold(direction)
+  let start = line('.')
+  if (a:direction == "next")
+    while (foldclosed(start) != -1)
+      let start = start + 1
+    endwhile
+  else
+    while (foldclosed(start) != -1)
+      let start = start - 1
+    endwhile
+  endif
+  call cursor(start, 0)
+endfunction
+nmap ]z :cal GoToOpenFold("next")<CR>
+nmap [z :cal GoToOpenFold("prev")<CR>
 
 " use vundle for global bundles and pathogen for user installed bundles
 " vundle dir: $HOME/.vim/vundle
@@ -159,7 +177,7 @@ set magic
 
 " key bindings:
 
-nnoremap <silent> <C-A> :silent nohl<CR>	" press C-A to unhilte searches
+nnoremap <silent> <C-x> :silent nohl<CR>	" press C-A to unhilte searches
 map <leader>m :mak<Enter><Enter><Enter>     " just call make and return to vim when done
 map <leader><leader>m :mak<Up><Enter><Enter><Enter>        " call last issued make command
 nmap <TAB> <C-^>                            " use TAB to switch to last used buffer in normal mode
@@ -279,3 +297,5 @@ nmap td :tabclose<CR>
 " markdown support
 autocmd FileType markdown set suffixesadd=.mkd
 
+" very simple template support
+command -nargs=1 Template read ~/.vim/templates/<args>
