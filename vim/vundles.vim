@@ -27,6 +27,8 @@ let g:alternateExtensions_cpp = "hh"
 let g:alternateExtensions_cc = "hh,h"
 let g:alternateExtensions_hh = "cpp,cxx,cc"
 
+let g:airline_powerline_fonts=1
+
 let g:tagbar_compact = 1
 
 " let g:ycm_filetype_specific_completion_to_disable = {
@@ -46,8 +48,8 @@ Bundle 'gmarik/vundle'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-pathogen'
 Bundle 'mileszs/ack.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
+" Bundle 'scrooloose/nerdcommenter'
+" Bundle 'scrooloose/nerdtree'
 Bundle 'YankRing.vim'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
@@ -70,6 +72,7 @@ Bundle 'git://github.com/urso/sack_shortcut.git'
 Bundle 'git://github.com/urso/haskell_syntax.vim.git'
 Bundle 'git://github.com/gcmt/taboo.vim'
 Bundle 'git://github.com/tpope/vim-unimpaired.git'
+Bundle 'bling/vim-airline'
 "Bundle 'flazz/vim-colorschemes'
 "Bundle 'guicolorscheme.vim'
 " Bundle 'Valloric/YouCompleteMe'
@@ -78,6 +81,7 @@ Bundle 'git://github.com/tpope/vim-unimpaired.git'
 " color schemes
 Bundle 'git://github.com/urso/github-theme.git'
 Bundle 'xoria256.vim'
+Bundle 'altercation/vim-colors-solarized'
 " Bundle 'ciaranm/inkpot'
 " Bundle 'jellybeans.vim'
 
