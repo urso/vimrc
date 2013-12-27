@@ -113,10 +113,6 @@ if $TERM == "xterm-256color"
     set t_Co=256
 endif
 
-" configure color scheme
-"set background=dark
-" silent! colorscheme blackboard
-silent! colorscheme github
 
 set ruler
 set showcmd
@@ -127,7 +123,14 @@ set showmatch                           " show matching brackets when text indic
 syntax on                           " enable syntax highlighting
 set hlsearch                        " highlight all patterns from last search
 set colorcolumn=80                      " highlight column 80
-hi ColorColumn ctermbg=253
+
+" configure color scheme
+"set background=dark
+" silent! colorscheme blackboard
+" silent! colorscheme github
+set background=dark
+silent! colorscheme solarized
+" hi ColorColumn ctermbg=253
 
 " show unwanted white spaces
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
