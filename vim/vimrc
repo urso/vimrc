@@ -51,7 +51,7 @@ source ~/.vim/vundles.vim
 silent! call pathogen#infect()
 
 
-" share system clipboard 
+" share system clipboard
 set clipboard=unnamed
 
 " configure some general behaviour
@@ -62,7 +62,7 @@ else
 endif
 set backupdir=~/.vim_backup
 set undofile                            " configure vim persist file undo
-set undodir=~/.vim_undo                 
+set undodir=~/.vim_undo
 set undolevels=1000 "maximum number of changes that can be undone
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 set history=800
@@ -76,10 +76,9 @@ set sessionoptions+=resize
 set whichwrap=b,s,h,l,<,>,[,]
 set nowrap                              " do not wrap text if longer than display
 set sidescroll=10
-autocmd! bufwritepost vimrc source ~/.vimrc "  When vimrc is edited, reload it
+autocmd! bufwritepost vimrc source ~/.vim/vimrc "  When vimrc is edited, reload it
 set modelines=0                         " turn off modelines (prevents possible exploits)
 set gdefault " add 'g' to replace pattern s/.../.../ by default
-au FocusLost * :wa                      " auto save file on buffer switch 
 
     " use python/perl like regex with search commands
 nnoremap / /\v
@@ -180,18 +179,16 @@ set magic
 
 " key bindings:
 
-nnoremap <silent> <C-x> :silent nohl<CR>	" press C-A to unhilte searches
-map <leader>m :mak<Enter><Enter><Enter>     " just call make and return to vim when done
-map <leader><leader>m :mak<Up><Enter><Enter><Enter>        " call last issued make command
+nnoremap <silent> <C-x> :silent nohl<CR>	" press C-x to unhilte searches
 nmap <TAB> <C-^>                            " use TAB to switch to last used buffer in normal mode
-nnoremap <leader>g :tag 
-nnoremap <leader>w :vertical resize 
+nnoremap <leader>g :tag
+nnoremap <leader>w :vertical resize
 
 " shortcuts for moving cursor between windows
-noremap <C-J> <C-W>j
-noremap <C-K> <C-W>k
-noremap <C-H> <C-W>h
-noremap <C-L> <C-W>l
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
 
 " write file with sudo
 cmap w!! w !sudo tee % >/dev/null
@@ -205,50 +202,12 @@ if filereadable(expand('$HOME/.vimrc.local'))
     source $HOME/.vimrc.local
 endif
 
-let g:UltiSnipsSnippetDirectories=["mysnippets"]
-
-if has('autocmd')
-	" change colorscheme depending on current buffer
-	" if desired, you may set a user-default colorscheme before this point,
-	" otherwise we'll use the Vim default.
-	" Variables used:
-		" g:colors_name : current colorscheme at any moment
-		" b:colors_name (if any): colorscheme to be used for the current buffer
-		" s:colors_name : default colorscheme, to be used where b:colors_name hasn't been set
-	if has('user_commands')
-		" User commands defined:
-			" ColorScheme <name>
-				" set the colorscheme for the current buffer
-			" ColorDefault <name>
-				" change the default colorscheme
-		command -nargs=1 -bar ColorScheme
-			\ colorscheme <args>
-            \ | hi ColorColumn ctermbg=235
-			\ | let b:colors_name = g:colors_name
-		command -nargs=1 -bar ColorDefault
-			\ let s:colors_name = <q-args>
-			\ | if !exists('b:colors_name')
-				\ | colors <args>
-			\ | endif
-	endif
-	if !exists('g:colors_name')
-		let g:colors_name = 'default'
-	endif
-	let s:colors_name = g:colors_name
-	au BufEnter *
-		\ let s:new_colors = (exists('b:colors_name')?(b:colors_name):(s:colors_name))
-		\ | if s:new_colors != g:colors_name
-			\ | exe 'colors' s:new_colors
-            \ | hi ColorColumn ctermbg=235
-		\ | endif
-endif
-
 nnoremap <silent> <leader>d :Sbd<CR>
 
 let g:yankring_manual_clipboard_check = 0
 
 " better tab support (remember working directory per tab)
-function! s:enter_buffer()
+function! s:enter_tab()
     if exists("t:wd")
         exec "cd" t:wd
     else
@@ -256,13 +215,13 @@ function! s:enter_buffer()
     endif
 endfunction
 
-function! s:leave_buffer()
+function! s:leave_tab()
     let t:wd = getcwd()
 endfunction
 augroup wd-per-tab
     autocmd!
-    autocmd TabEnter * call s:enter_buffer()
-    autocmd TabLeave * call s:leave_buffer()
+    autocmd TabEnter * call s:enter_tab()
+    autocmd TabLeave * call s:leave_tab()
 augroup END
 
 " test bubling with help of vim-unimpared (see:

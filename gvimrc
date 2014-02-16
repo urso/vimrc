@@ -12,5 +12,8 @@ set guioptions+=c " turn on console dialogs
 " set noantialias
 
 " set guifont=Menlo:h12
-colorscheme github
+" colorscheme github
 " set spell
+
+set background=dark
+set guifont=Sauce\ Code\ Powerline:h11
