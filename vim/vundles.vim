@@ -14,8 +14,6 @@ if executable("ack-grep")
 endif
 Bundle 'mileszs/ack.vim'
 
-Bundle 'YankRing.vim'
-
 Bundle 'tpope/vim-repeat'
 
 Bundle 'scratch.vim'
@@ -25,16 +23,16 @@ let g:localvimrc_ask=0
 let g:localvimrc_sandbox=0
 Bundle 'localvimrc'
 
-" configure ctrl-p plugin
-let g:ctrlp_map = '<leader>t'
-let g:ctrlp_by_filename = 0
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_extensions = ['tag', 'buffertag', 'line']
-Bundle 'git://github.com/kien/ctrlp.vim.git'
-nmap <leader>r :CtrlPMRUFiles<CR>
-nmap <leader>b :CtrlPBuffer<CR>
+"" configure ctrl-p plugin
+"let g:ctrlp_map = '<leader>t'
+"let g:ctrlp_by_filename = 0
+"let g:ctrlp_switch_buffer = 0
+"let g:ctrlp_working_path_mode = 0
+"let g:ctrlp_follow_symlinks = 1
+"let g:ctrlp_extensions = ['tag', 'buffertag', 'line']
+"Bundle 'git://github.com/kien/ctrlp.vim.git'
+"nmap <leader>r :CtrlPMRUFiles<CR>
+"nmap <leader>b :CtrlPBuffer<CR>
 
 let g:alternateExtensions_cpp = "hh"
 let g:alternateExtensions_cc = "hh,h"
@@ -50,11 +48,6 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'Gundo'
 
 Bundle 'indentpython.vim--nianyang'
-
-let g:tagbar_compact = 1
-Bundle 'majutsushi/tagbar'
-nmap <leader>o :TagbarOpen j<CR>
-nmap <leader>f :TagbarTogglePause<CR>
 
 Bundle 'git://github.com/ollummis/sbd.vim.git'
 
@@ -86,7 +79,27 @@ Bundle 'altercation/vim-colors-solarized'
 let g:space_no_jump = 1
 Bundle 'spiiph/vim-space'
 
-" configure yankring
-nnoremap \y :YRShow<CR>
 
+let g:unite_enable_start_insert = 1
+let g:unite_matcher_fuzzy_max_input_length=100
+Bundle 'Shougo/unite.vim'
+Bundle 'tsukkee/unite-tag'
+Bundle 'Shougo/unite-outline'
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files -start-insert file_rec<CR>
+nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<CR>
+nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer -start-insert buffer<CR>
+nnoremap <leader>j :<C-u>Unite -no-split -buffer-name=jump -start-insert jump<CR>
+nnoremap <leader>g :<C-u>Unite -no-split -buffer-name=tags -start-insert tag<CR>
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
 
