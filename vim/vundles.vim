@@ -81,9 +81,6 @@ nnoremap \y :YRShow<CR>
 
 nmap <leader>r :CtrlPMRUFiles<CR>
 nmap <leader>b :CtrlPBuffer<CR>
-nmap <leader><leader>g :CtrlPTag<CR>
-nmap <leader><leader>b :CtrlPBufTag<CR>
-nmap <leader>l :CtrlPLine<CR>
 nmap <leader>o :TagbarOpen j<CR>
 nmap <leader>f :TagbarTogglePause<CR>
 nmap <leader>s :SyntasticToggleMode<CR>
