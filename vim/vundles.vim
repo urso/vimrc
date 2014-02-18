@@ -49,28 +49,28 @@ Bundle 'Gundo'
 
 Bundle 'indentpython.vim--nianyang'
 
-Bundle 'git://github.com/ollummis/sbd.vim.git'
+Bundle 'ollummis/sbd.vim'
 
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_c_compiler_options = ''
 Bundle 'scrooloose/syntastic.git'
 nmap <leader>s :SyntasticToggleMode<CR>
 
-Bundle 'git://repo.or.cz/vcscommand'
+Bundle 'vcscommand.vim'
 
-Bundle 'git://github.com/urso/sack_shortcut.git'
+Bundle 'urso/sack_shortcut'
 
-Bundle 'git://github.com/urso/haskell_syntax.vim.git'
+Bundle 'urso/haskell_syntax.vim'
 
-Bundle 'git://github.com/gcmt/taboo.vim'
+Bundle 'gcmt/taboo.vim'
 
-Bundle 'git://github.com/tpope/vim-unimpaired.git'
+Bundle 'tpope/vim-unimpaired'
 
 let g:airline_powerline_fonts=1
 Bundle 'bling/vim-airline'
 
 " color schemes
-Bundle 'git://github.com/urso/github-theme.git'
+Bundle 'urso/github-theme'
 
 Bundle 'xoria256.vim'
 
