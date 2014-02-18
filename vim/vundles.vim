@@ -74,6 +74,8 @@ Bundle 'urso/github-theme'
 
 Bundle 'xoria256.vim'
 
+let g:ShowTrailingWhitespace = 1
+Bundle 'ShowTrailingWhitespace'
 Bundle 'altercation/vim-colors-solarized'
 
 let g:space_no_jump = 1
@@ -87,6 +89,7 @@ Bundle 'tsukkee/unite-tag'
 Bundle 'Shougo/unite-outline'
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#custom#source('file_rec', 'ignore_pattern', 'bin/')
 nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files -start-insert file_rec<CR>
 nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<CR>
 nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer -start-insert buffer<CR>
@@ -102,4 +105,5 @@ function! s:unite_settings()
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 endfunction
+
 
