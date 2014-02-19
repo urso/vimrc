@@ -84,17 +84,23 @@ Bundle 'spiiph/vim-space'
 
 let g:unite_enable_start_insert = 1
 let g:unite_matcher_fuzzy_max_input_length=100
+
+let g:unite_source_rec_unit = 1000
+let g:unite_source_find_max_candidates=1000
 Bundle 'Shougo/unite.vim'
 Bundle 'tsukkee/unite-tag'
 Bundle 'Shougo/unite-outline'
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#custom#source('file_rec', 'ignore_pattern', 'bin/')
-nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files -start-insert file_rec<CR>
+call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', 'bin/')
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files -start-insert -sync file_rec/async:!<CR>
 nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<CR>
 nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer -start-insert buffer<CR>
 nnoremap <leader>j :<C-u>Unite -no-split -buffer-name=jump -start-insert jump<CR>
 nnoremap <leader>g :<C-u>Unite -no-split -buffer-name=tags -start-insert tag<CR>
+let g:unite_source_rec_max_cache_files = 0
+call unite#custom#source('file_rec,tag,file_rec/async', 'max_candidates', 0)
+
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()

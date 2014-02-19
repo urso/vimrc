@@ -130,7 +130,7 @@ noremap <C-l> <C-W>l
 
 " use TAB to switch to last used buffer in normal mode
 nmap <TAB> <C-^>
-nnoremap <leader>w :vertical resize
+nnoremap <leader>w :vertical resize 
 
 " use sbd to delete buffer without closing window
 nnoremap <silent> <leader>d :Sbd<CR>
