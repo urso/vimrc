@@ -67,6 +67,7 @@ Bundle 'gcmt/taboo.vim'
 Bundle 'tpope/vim-unimpaired'
 
 let g:airline_powerline_fonts=1
+let g:airline_theme='zenburn'
 Bundle 'bling/vim-airline'
 
 " color schemes
@@ -80,6 +81,11 @@ Bundle 'altercation/vim-colors-solarized'
 
 let g:space_no_jump = 1
 Bundle 'spiiph/vim-space'
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+Bundle 'SirVer/ultisnips'
 
 
 let g:unite_enable_start_insert = 1
@@ -97,10 +103,9 @@ nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files -start-insert -sync 
 nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<CR>
 nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer -start-insert buffer<CR>
 nnoremap <leader>j :<C-u>Unite -no-split -buffer-name=jump -start-insert jump<CR>
-nnoremap <leader>g :<C-u>Unite -no-split -buffer-name=tags -start-insert tag<CR>
+" nnoremap <leader>g :<C-u>Unite -no-split -buffer-name=tags -start-insert tag<CR>
 let g:unite_source_rec_max_cache_files = 0
 call unite#custom#source('file_rec,tag,file_rec/async', 'max_candidates', 0)
-
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
