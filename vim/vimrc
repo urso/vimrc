@@ -87,8 +87,8 @@ nnoremap <silent> <C-x> :silent nohl<CR>	" press C-x to unhilte searches
 "------------------------------------------------------------------------------
 "  5 syntax, highlighting and spelling
 "------------------------------------------------------------------------------
-set background=dark
-silent! colorscheme solarized
+set background=light
+silent! colorscheme github
 
 " filetype plugin indent on
 
