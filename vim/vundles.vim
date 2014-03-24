@@ -49,49 +49,63 @@ Bundle 'Gundo'
 
 Bundle 'indentpython.vim--nianyang'
 
-Bundle 'git://github.com/ollummis/sbd.vim.git'
+Bundle 'ollummis/sbd.vim'
 
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_c_compiler_options = ''
 Bundle 'scrooloose/syntastic.git'
 nmap <leader>s :SyntasticToggleMode<CR>
 
-Bundle 'git://repo.or.cz/vcscommand'
+Bundle 'vcscommand.vim'
 
-Bundle 'git://github.com/urso/sack_shortcut.git'
+Bundle 'urso/sack_shortcut'
 
-Bundle 'git://github.com/urso/haskell_syntax.vim.git'
+Bundle 'urso/haskell_syntax.vim'
 
-Bundle 'git://github.com/gcmt/taboo.vim'
+Bundle 'gcmt/taboo.vim'
 
-Bundle 'git://github.com/tpope/vim-unimpaired.git'
+Bundle 'tpope/vim-unimpaired'
 
 let g:airline_powerline_fonts=1
+let g:airline_theme='zenburn'
 Bundle 'bling/vim-airline'
 
 " color schemes
-Bundle 'git://github.com/urso/github-theme.git'
+Bundle 'urso/github-theme'
 
 Bundle 'xoria256.vim'
 
+let g:ShowTrailingWhitespace = 1
+Bundle 'ShowTrailingWhitespace'
 Bundle 'altercation/vim-colors-solarized'
 
 let g:space_no_jump = 1
 Bundle 'spiiph/vim-space'
 
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+Bundle 'SirVer/ultisnips'
+
 
 let g:unite_enable_start_insert = 1
 let g:unite_matcher_fuzzy_max_input_length=100
+
+let g:unite_source_rec_unit = 1000
+let g:unite_source_find_max_candidates=1000
 Bundle 'Shougo/unite.vim'
 Bundle 'tsukkee/unite-tag'
 Bundle 'Shougo/unite-outline'
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
-nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files -start-insert file_rec<CR>
+call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', 'bin/')
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files -start-insert -sync file_rec/async:!<CR>
 nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<CR>
 nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer -start-insert buffer<CR>
 nnoremap <leader>j :<C-u>Unite -no-split -buffer-name=jump -start-insert jump<CR>
-nnoremap <leader>g :<C-u>Unite -no-split -buffer-name=tags -start-insert tag<CR>
+" nnoremap <leader>g :<C-u>Unite -no-split -buffer-name=tags -start-insert tag<CR>
+let g:unite_source_rec_max_cache_files = 0
+call unite#custom#source('file_rec,tag,file_rec/async', 'max_candidates', 0)
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
@@ -102,4 +116,5 @@ function! s:unite_settings()
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 endfunction
+
 

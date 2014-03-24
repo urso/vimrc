@@ -1,0 +1,42 @@
+extends c
+
+snippet forall "for loop (for)"
+for (auto ${2:it} : ${1:collection}) {
+	${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+}
+endsnippet
+
+snippet nsp "Namespace (namespace)"
+namespace ${1:name} {
+
+${0}
+
+} // ns: $1
+endsnippet
+
+snippet cdcl "class with constructor/destroctur (class)"
+class ${1:`!p snip.rv = (snip.basename or "name")`} {
+public:
+	$1(${2:});
+	${3}~$1();
+	${0:/* interface */}
+private:
+};
+endsnippet
+
+snippet ccl "class with constructor (class)"
+class ${1:`!p snip.rv = (snip.basename or "name")`} {
+public:
+	$1(${2:});
+	${0:/* interface */}
+private:
+};
+endsnippet
+
+snippet cl "class (class)"
+class ${1:`!p snip.rv = (snip.basename or "name")`} {
+public:
+	${0:/* interface */}
+private:
+};
+endsnippet

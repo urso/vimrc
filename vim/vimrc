@@ -87,11 +87,10 @@ nnoremap <silent> <C-x> :silent nohl<CR>	" press C-x to unhilte searches
 "------------------------------------------------------------------------------
 "  5 syntax, highlighting and spelling
 "------------------------------------------------------------------------------
-set background=dark
-" silent! colorscheme solarized
-silent! colorscheme solarized
+set background=light
+silent! colorscheme github
 
-filetype plugin indent on
+" filetype plugin indent on
 
 syntax on                           " enable syntax highlighting
 
@@ -101,10 +100,7 @@ set hlsearch
 set colorcolumn=80                      " highlight column 80
 
 " show unwanted white spaces
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhitespace /\s\+$/
+highlight ShowTrailingWhitespace ctermbg=red guibg=red
 
 "------------------------------------------------------------------------------
 "  6 multiple windows
@@ -134,7 +130,7 @@ noremap <C-l> <C-W>l
 
 " use TAB to switch to last used buffer in normal mode
 nmap <TAB> <C-^>
-nnoremap <leader>w :vertical resize
+nnoremap <leader>w :vertical resize 
 
 " use sbd to delete buffer without closing window
 nnoremap <silent> <leader>d :Sbd<CR>
