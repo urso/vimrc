@@ -147,17 +147,28 @@ nnoremap <silent> <leader>d :Sbd<CR>
 " better tab support:
 "  - remember working directory per tab
 "  - remember last used tab
+"  - remember args list
 function! s:enter_tab()
     if exists("t:wd")
         exec "cd" t:wd
     else
         let t:wd = getcwd()
     endif
+
+    if argc() > 0
+        exec "argdelete *"
+    endif
+    if exists ("t:lastargs") && t:nlastargs > 0
+        exec "args" t:lastargs
+    endif
 endfunction
 
 function! s:leave_tab()
     let t:wd = getcwd()
     let g:lasttab = tabpagenr()
+
+    let t:lastargs = join(map(argv(), "escape(v:val,\"\\\\ \")"), ' ')
+    let t:nlastargs = argc()
 endfunction
 
 function! GotoLastTab()
@@ -391,4 +402,3 @@ set gdefault " add 'g' to replace pattern s/.../.../ by default
 set sessionoptions+=resize
 
 set viminfo='1000,<50,s10,h
-
